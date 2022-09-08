@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add book</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('shared/_navbar') %>
+    <div class="wrapper">
+        <h1 class="title">Add book</h1>
+        <form action="/api/addbook" method="POST">
+            <div class="form-group">
+                <input type="hidden" name="id">
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" placeholder="title" name="title">
+            </div>
+            <div class="form-group">
+                <label for="author">author</label>
+                <input type="text" placeholder="author" name="author">
+            </div>
+            <div class="form-group">
+                <label for="price">price</label>
+                <input type="number" placeholder="price" name="price">
+            </div>
+            <div class="form-group">
+                <button type="submit">Add</button>
+            </div>
+        </form>
+    </div>
+    <a href="/books" id="back">❮ Books</a>
+</body>
+</html>

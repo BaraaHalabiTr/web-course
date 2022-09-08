@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+nav {
+    background-color: teal;
+    color: white;
+
+    padding: 1rem 0;
+
+    display: flex;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+.title {
+    text-align: center;
+    color: teal;
+
+    margin-top: 2rem;
+}
+
+.wrapper {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 700px;
+
+    padding-top: 2rem;
+}
+
+.container a {
+    padding: 0.5rem;
+
+    text-decoration: none;
+    font-size: 0.8rem;
+
+    color: teal;
+    background-color: white;
+
+    border-radius: 5px;
+    border: 2px solid teal;
+
+    transition: 0.2s;
+}
+
+.container a:hover {
+    background-color: teal;
+    color: white;
+
+    transition: 0.2s;
+}
+
+table {
+    border-radius: 5px;
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    overflow: hidden;
+
+    margin-top: 2rem;
+
+    width: 100%;
+
+    font-size: 0.9rem;
+}
+
+table thead tr {
+    background-color: teal;
+    font-weight: bold;
+    color: white;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+table th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+table tbody tr:last-of-type {
+    border-bottom: 2px solid teal;
+}
+
+form {
+    padding-top: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    width: 300px;
+    
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    color: gray;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 0.5rem 0;
+    margin-top: 0.2rem;
+
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.form-group button {
+    width: 100%;
+
+    padding: 0.5rem;
+
+    background-color: teal;
+    color: white;
+
+    border-radius: 5px;
+    border: 2px solid teal;
+
+    transition: 0.2s;
+}
+
+.form-group button:hover {
+    background-color: white;
+    color: teal;
+}
+
+#back {
+    color:teal;
+    text-decoration: none;
+
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+
+#back:hover {
+    text-decoration: underline;
+}
+
+/* .icon-button {
+    padding: 0.5rem;
+
+    border-radius: 5px;
+
+    text-decoration: none;
+
+    color: teal;
+
+    width: 38px;
+    height: 38px;
+} */
