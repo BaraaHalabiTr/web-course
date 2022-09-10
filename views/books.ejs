@@ -31,8 +31,9 @@
                         <td><%= books[i].author %></td>
                         <td><%= books[i].price %></td>
                         <td>
-                            <a href="/editbook?id=<%= books[i].id %>"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a><i class="fa-solid fa-trash"></i></a>
+                            <a href="/editbook?id=<%= books[i].id %> " class="icon-button"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="/api/deletebook?id=<%= books[i].id %>" class="icon-button"><i class="fa-solid fa-trash"></i></a>
+                            <a onclick="openDialog('<%= books[i].author %>', '<%= books[i].nationality %>', '<%= books[i].age %>')"><i class="fa-solid fa-circle-user"></i></a>
                         </td>
                     </tr>
                     <% } %>   
@@ -40,5 +41,23 @@
             </table>
         </div>
     </div>
+    <div id="backdrop">
+        <div id="dialog">
+            <div class="dialog-header">
+                <h3>Author details</h1>
+            </div>
+            <p>
+                Name: <span id="name"></span><br>
+                Nationality: <span id="nationality"></span><br>
+                Age: <span id="age"></span><br>
+            </p>
+            <div class="dialog-footer">
+                <span class="spacer"></span>
+                <button id="dismiss">OK</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD APP</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/b1845c8130.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <%- include('shared/_navbar') %>
+    <div class="wrapper">
+        <div class="container">
+            <a href="/addbook">New book <i class="fa-solid fa-book"></i></a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i=0; books.length; i++) {%> 
+                    <tr>
+                        <td><% books[i].id %> </td>
+                        <td><% books[i].title %> </td>
+                        <td><% books[i].author %> </td>
+                        <td><% books[i].price %> </td>
+                    </tr>
+                    <% } %>   
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

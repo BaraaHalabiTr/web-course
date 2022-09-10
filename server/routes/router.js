@@ -13,14 +13,18 @@ route.get('/books', (req , res) => {
     });
 });
 
-route.get('/editbook', (req, res) => {
-    axios.get(`http://localhost:3000/api/book?id=${req.query.id}`).then(response => {
-        res.render('editbook', { book: response.data[0] });
+route.get('/editbook',(req , res)=> {
+    axios.get(`http://localhost:3000/api/book?id=${req.query.id}`).then(response=> {
+        axios.get('http://localhost:3000/api/authors').then(authors=>{
+            res.render('editbook',{ book:response.data[0],authors:authors.data });
+        })
     });
 });
 
 route.get('/addbook', (req , res)=>{
-    res.render('addbook');
+    axios.get('http://localhost:3000/api/authors').then(response=>{
+        res.render('addbook',{authors : response.data});
+    });
 });
 
 module.exports = route;

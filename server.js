@@ -31,9 +31,10 @@ app.use('/', require('./server/routes/router'));
 
 //end points
 app.get('/api/books', (req, res) => {
-    const sql = 'SELECT * FROM books;';
+    const sql = 'SELECT b.id,b.title,b.price,b.author_id,a.name as author,a.nationality,a.age FROM books b INNER JOIN authors a ON b.author_id= a.id;';
     database.execute(sql).then(result => {
         //here we saw using postman that the response data was sent by the online data base in the first index of an array and this is why we accessed result[0]
+        console.log(result[0]);
         res.send(result[0]);
     }).catch(err => {
         /*
@@ -46,15 +47,33 @@ app.get('/api/books', (req, res) => {
     });
 });
 
-app.get('/api/book', (req, res) => {
-    const sql = `SELECT * FROM books WHERE id = ${req.query.id};`;
-    database.execute(sql).then(result => {
-        if(result[0].length == 0) {
-            res.status(404).send({
-                message: 'no book with such id'
-            });
-        }
+app.post('/api/addbook', (req, res)=> {
+    console.log(88888888888);
+    const sql= `INSERT INTO books (title,price,author_id) VALUES('${req.body.title}',${req.body.price}, ${req.body.author_id});`;
+    database.execute(sql).then(result=>{
+        res.status(201).redirect('/books');
+    }).catch(err => { 
+        res.status(500).send({ 
+             message: err.message 
+        });
+   });
+});
+
+app.get('/api/book',(req , res)=> {
+    const sql= `SELECT * FROM books WHERE id = ${req.query.id};`;
+    database.execute(sql).then(result=> {
         res.send(result[0]);
+    }).catch(err => { 
+        res.status(500).send({ 
+             message: err.message 
+        });
+   });
+});
+
+app.post('/api/editbook',(req, res)=>{
+    const sql= `UPDATE books SET title='${req.body.title}',author_id='${req.body.author_id}',price=${req.body.price} WHERE id= ${req.body.id};`;
+    database.execute(sql).then(result=>{
+        res.status(201).redirect('/books');
     }).catch(err => {
         res.status(500).send({
             message: err.message
@@ -62,21 +81,21 @@ app.get('/api/book', (req, res) => {
     });
 });
 
-app.post('/api/addbook', (req, res) => {
-    const sql = `INSERT INTO books (title, author, price) VALUES('${req.body.title}', '${req.body.author}', ${req.body.price});`;
-    database.execute(sql).then(result => {
-        res.status(201).send();
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message
+    app.get ('/api/deletebook', (req, res)=> {
+        const sql= `DELETE FROM books WHERE id=${req.query.id};`;
+        database.execute(sql).then(result=>{
+            res.status(202).redirect('/books');
+        }).catch(err=>{
+            res.status(500).send({
+                message: err.message
+            });
         });
     });
-});
 
-app.post('/api/editbook', (req, res) => {
-    const sql = `UPDATE books SET title = '${req.body.title}', author = '${req.body.author}', price = ${req.body.price} WHERE id = ${req.body.id};`;
+app.get('/api/authors', (req, res) => {
+    const sql = 'SELECT * FROM authors';
     database.execute(sql).then(result => {
-        res.status(202).redirect('/books');
+        res.send(result[0]);
     }).catch(err => {
         res.status(500).send({
             message: err.message
